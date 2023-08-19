@@ -27,7 +27,7 @@ Maternity,Nurse Herd,Sage,Jersey,,Cresent moom on forehead,6/14/23,2,Natural,Sil
 Maternity,Nurse Herd,*Lilac,Jersey,Heifer,Nursing on Jade,9/9/22,11,Natural,Olga,Domino
 Maternity,Nurse Herd,*Josie,Jersey,Heifer,"Exposed to Ivano/Hercules, if settles due 4/9/24. TEENAGE PREGNANCY!!!",10/5/22,10,Natural,Jade,Domino
 North Owens,Breeding,1929-Ivano,Jersey w/Line A2/A2,Bull,AKA Ivan the terri-bull or Ivano,10/16/19,46,Natural,Ivana,Shaggy-P
-North Owens,Breeding,"2203 ""Hercules""",Jersey Pf/H A2/A2,Bull,,1/23/22,19,Natural,Hibiscus,Domino
+North Owens,Breeding,2203 Hercules,Jersey Pf/H A2/A2,Bull,,1/23/22,19,Natural,Hibiscus,Domino
 North Owens,Breeding,*Bombay,Jersey A1,Heifer,"Due 3/21/23- ????, by Ivano/Hercules",9/7/18,59,Natural,Bambi,Arnold/Sam?
 North Owens,Breeding,*Olga,Jersey- A1,Heifer,"Due 3/21/23- ????, by Ivano/Hercules",8/19/18,60,Natural,Olive,Arnold
 North Owens,Breeding,*Josephina,Jersey-129 A1,Cow,"Due 3/21/23- ????, by Ivano/Hercules",9/15/17,71,Natural,Jade,Roberto/
@@ -58,9 +58,9 @@ North Hay,Main Herd,G41,RWF- 1/2 belty,Cow,,9/11/11,143,OTCO,E17,Galloway?
 North Hay,Main Herd,2339,White w/ Tips,Heifer,,5/10/23,3,OTCO,G41,Everette/Everest
 North Hay,Main Herd,H04,RWF,Cow,,2/9/12,138,OTCO,C51,
 North Hay,Main Herd,2321,White w/ Tips,Steer,,4/21/23,4,OTCO,H04,Everette/Everest
-North Hay,Main Herd,1502,"Black tag ""19-Lilli""",Cow,,1/1/15,103,Natural,Adam Stevens,Adam Stevens
+North Hay,Main Herd,1502,Black tag 19-Lilli,Cow,,1/1/15,103,Natural,Adam Stevens,Adam Stevens
 North Hay,Main Herd,2346,Black,Heifer,,6/3/23,2,OTCO,1502,Everette/Everest
-North Hay,Main Herd,1501,"Dun black points ""Lucy""",Cow,,1/1/15,103,Natural,Adam Stevens,Adam Stevens
+North Hay,Main Herd,1501,Dun black points Lucy,Cow,,1/1/15,103,Natural,Adam Stevens,Adam Stevens
 North Hay,Main Herd,2327,Black,Steer,,4/28/23,4,OTCO,1501,Everette/Everest
 North Hay,Main Herd,1607,Black-Calm,Cow,,1/6/16,91,OTCO,H21?,Pericles
 North Hay,Main Herd,2308,white w/Tips,Heifer,,4/8/23,4,OTCO,1607,Everette/Everest
@@ -110,7 +110,7 @@ North Hay,Main Herd,1921,BWF,Cow,,3/12/19,53,OTCO,D04,1608/1609
 North Hay,Main Herd,2317,Black w/ White marks on head,Steer,,4/19/23,4,OTCO,1921,Everette/Everest
 North Hay,Main Herd,1924,BWF,Cow,,4/11/19,52,OTCO,H23,1608/1609
 North Hay,Main Herd,2319,BWF,Heifer,,4/21/23,4,OTCO,1924,Everette/Everest
-North Hay,Main Herd,1932,"""Devine"" Black",Cow,,10/1/19,46,Natural,Banson,Simmental
+North Hay,Main Herd,1932,Devine Black,Cow,,10/1/19,46,Natural,Banson,Simmental
 North Hay,Main Herd,2330,White w/ Tips,Steer,,4/28/23,4,OTCO,1932,Everette/Everest
 North Hay,Main Herd,1933,Black/brown 1/2 simmentalXjersey,Cow,,10/2/19,46,Natural,Banson,Simmental
 North Hay,Main Herd,2325,Brown,Steer,,4/25/23,4,OTCO,1933,Everette/Everest
@@ -133,7 +133,7 @@ Highpass,Gestating Dairy,*Stella,Jersey-A2/A2,Heifer,"Due 8/10/23-10/19/23, by I
 Highpass,Gestating Dairy,*Sirena,Jersey,Heifer,"Due 8/10/10-10/19/23, by Ivano",11/18/20,33,Natural,Sri Lanka,Domino
 Highpass,Gestating Dairy,*Ivory,,Heifer,"Due 8/10/10- 10/19/23, by Ivano",12/25/20,32,Natural,Izzy,Domino
 Highpass,Gestating Dairy,*Halo,Jersey-A2/A2,Heifer,"Due 8/10/10- 10/19/23, by Ivano",1/2/21,31,Natural,Heidi,Domino
-Highpass,Gestating Dairy,"*Blue ""2103""",Jersey-A2/A2,Heifer,"Due 8/10/10- 10/19/23, by Ivano",1/17/21,31,Natural,Bombay,Domino
+Highpass,Gestating Dairy,*Blue 2103,Jersey-A2/A2,Heifer,"Due 8/10/10- 10/19/23, by Ivano",1/17/21,31,Natural,Bombay,Domino
 Highpass,Gestating Dairy,*Belen-P,JerseyX-A2/A2,Heifer,"Due 11/29/23, by Ivano",10/24/18,58,Natural,Bella,Arnold/Sam?
 Two Rivers,Finishers,2010,JerseyXAngus,Heifer,,3/16/20,41,Natural,Ida,1608/1610
 Two Rivers,Finishers,2036,A2/A2 Born Big,Steer,,12/26/20,32,Natural,Henni P,I. Man
@@ -172,7 +172,7 @@ Two Rivers,Finishers,2133,Black,Steer,,6/4/21,26,OTCO,H35,1818
 Two Rivers,Finishers,2138,White,Heifer,,11/15/21,21,OTCO,H16,Everett
 Two Rivers,Finishers,2204,Jersey H/H A2/A2,Steer,Twin w/2205,1/25/22,19,Natural,Imogen,Domino
 Two Rivers,Finishers,2202,Jersey,Steer,,1/21/22,19,Natural,Butter,Domino
-Two Rivers,Finishers,Luciana,Jersey Pf/H A2/A2,Heifer,"""Lucy""",2/9/22,18,Natural,Osiria,Domino
+Two Rivers,Finishers,Luciana,Jersey Pf/H A2/A2,Heifer,Lucy,2/9/22,18,Natural,Osiria,Domino
 Two Rivers,Finishers,2206,Jersey,Steer,,1/30/22,19,Natural,Ophelia,Domino
 Two Rivers,Finishers,2207,Jersey H/H A2/A2,Steer,,2/19/22,18,Natural,Ivy,Domino
 Two Rivers,Finishers,2208,JerseyX Beef?,Steer,,3/1/22,17,Natural,Hazelnut,Beef??
@@ -182,8 +182,8 @@ Two Rivers,Finishers,*Layla,Jersey white tip on tail,Heifer,,5/20/22,15,Natural,
 Two Rivers,Finishers,*Lavender,Jersey,Heifer,,5/26/22,15,Natural,Oleah,Ivano
 Two Rivers,Finishers,*Beverly,Jersey,Heifer,,7/24/22,13,Natural,Belen,Domino
 Two Rivers,Finishers,*Billie,Jersey,Heifer,,8/11/22,12,Natural,Bombay,Domino
-North Maternity,Bulls,2028,White w/ black dots,Bull,"NO TAG moved to Main 6/30/22 ""Everest""",5/12/20,39,OTCO,1719,Everett
-North Maternity,Bulls,"2205 ""Iago""",Jersey Pf/H A2/A2,Bull,Twin w/2204,1/25/22,19,Natural,Imogen,Domino
+North Maternity,Bulls,2028,White w/ black dots,Bull,NO TAG moved to Main 6/30/22 Everest,5/12/20,39,OTCO,1719,Everett
+North Maternity,Bulls,2205 Iago,Jersey Pf/H A2/A2,Bull,Twin w/2204,1/25/22,19,Natural,Imogen,Domino
 North Maternity,Bulls,2105,White w/brown tips,Bull,,4/12/21,28,OTCO,1819,Everett
 North Maternity,Bulls,2130,Black,Bull,,5/7/21,27,OTCO,1814,Everett
 North Maternity,Bulls,2031,Jersey-A2/A2,Bull,,12/14/20,32,Natural,Ivy,Domino
