@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="dist/css/tabulator.min.css">
+  <script src="/dist/js/tabulator.min.js"></script>
+  <title>Google Sheets Viewer</title>
+</head>
+<body>
+  <div id="table"></div>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const sheetURL = urlParams.get('url');
+
+    if (!sheetURL) {
+      alert('Google Sheets URL is missing.');
+    } else {
+      const table = new Tabulator('#table', {
+        layout: 'fitColumns',
+        ajaxURL: '/get-google-sheets?url=' + encodeURIComponent(sheetURL),
+        ajaxConfig: 'GET',
+        ajaxResponse: function(url, params, response) {
+          return response;
+        },
+        columns: [
+          // Define your columns here based on the data in the Google Sheets
+          // For example:
+          { title: "Location", field: "Location" },
+          { title: "Herd", field: "Herd" },
+          // Add more columns as needed
+        ],
+      });
+    }
+  </script>
+</body>
+</html>

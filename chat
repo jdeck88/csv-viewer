@@ -1,0 +1,2 @@
+Create a nodejs application that reads an XSLX file stored at a URL. The URL is passed to the node script as a GET parameter.  Read only the first sheet in the workbook.  Display the worksheet as a database and Enable sorting on each column.  Allow filtering on either  of the first two columns of the worksheet
+
