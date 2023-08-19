@@ -9,24 +9,36 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
 });
 
-app.get('/get-google-sheets', (req, res) => {
-  const sheetURL = req.query.url;
+app.get('/get-csv', (req, res) => {
+  const csvURL = req.query.url;
 
-  if (!sheetURL) {
+  if (!csvURL) {
     return res.status(400).send('URL parameter is required.');
   }
-  
-  axios.get(sheetURL)
+
+  axios.get(csvURL)
     .then(response => {
-      const sheetData = response.data;
-      res.json(sheetData);
+      const csvData = response.data;
+      const csvRows = csvData.split('\n');
+      const headers = csvRows[0].split(',');
+
+      const csvArray = [];
+      for (let i = 1; i < csvRows.length; i++) {
+        const row = csvRows[i].split(',');
+        const rowData = {};
+        for (let j = 0; j < headers.length; j++) {
+          rowData[headers[j]] = row[j];
+        }
+        csvArray.push(rowData);
+      }
+
+      res.json(csvArray);
     })
     .catch(error => {
-      console.error('Error fetching Google Sheets data:', error);
-      res.status(500).send('Error fetching Google Sheets data.');
+      console.error('Error fetching CSV data:', error);
+      res.status(500).send('Error fetching CSV data.');
     });
 });
 
 app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`);
-});
+ 
