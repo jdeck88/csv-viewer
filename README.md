@@ -1,6 +1,9 @@
 View any CSV file, passed in as a GET parameter on URL string.  Group and parse by all fields.  Handy for easily working with CSV delimeted data structures.  For example:
 
 ```
+# first start node service
+node app.js
+# then paste the following in the search bar
 http://localhost:3000/?url=https://raw.githubusercontent.com/jdeck88/csv-viewer/master/data/cattle.csv
 ```
 
