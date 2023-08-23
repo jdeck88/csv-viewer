@@ -7,7 +7,7 @@ node app.js
 http://localhost:3000/?url=https://raw.githubusercontent.com/jdeck88/csv-viewer/master/data/cattle.csv
 ```
 # populate config.js file
-Need to populate config.js with user login information
+rename `config.template.js` to `config.js` and update username and password
 
 
 <p align="center">
