@@ -1,45 +1,214 @@
-const express = require('express');
-const axios = require('axios');
-const app = express();
-const port = 3000;
+<!DOCTYPE html>
+<html lang="en">
 
-app.use(express.static('public'));
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/dist/css/tabulator.min.css">
+  <link rel="stylesheet" href="/styles.css">
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html');
-});
+  <script src="/dist/js/tabulator.min.js"></script>
+  <title>CSV Viewer</title>
+</head>
 
-app.get('/get-csv', (req, res) => {
-  const csvURL = req.query.url;
+<body>
+  <h1>
+    <center>Beef and Dairy Viewer/Editor</center>
+  </h1>
 
-  if (!csvURL) {
-    return res.status(400).send('URL parameter is required.');
-  }
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <h2>Enter Your Credentials</h2>
+      <form action="/login" method="post" id="login-form">
+        <label for="username">Username: </label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Password: </label>
+        <input type="password" id="password" name="password" required><br><br>
+        <button type="submit" id="submitPass">Submit</button>
+      </form>
+    </div>
+  </div>
 
-  axios.get(csvURL)
-    .then(response => {
-      const csvData = response.data;
-      const csvRows = csvData.split('\n');
-      const headers = csvRows[0].split(',');
+  <div id="userInfo" style="display: none;position: fixed; top: 0; right: 0; border: 0;">
+    Welcome, <span id="loggedInUsername"></span>!
+    <button id="logoutButton">Logout</button>
+  </div>
+  <div>
+    <label for="group-by-selector">Group By:</label>
+    <select id="group-by-selector"></select>
+    <button id="saveButton">Save</button>
+  </div>
 
-      const csvArray = [];
-      for (let i = 1; i < csvRows.length; i++) {
-        const row = csvRows[i].split(',');
-        const rowData = {};
-        for (let j = 0; j < headers.length; j++) {
-          rowData[headers[j]] = row[j];
-        }
-        csvArray.push(rowData);
+  <div id="table"></div>
+  <script>
+
+    const modal = document.getElementById('modal');
+    const form = document.getElementById('login-form');
+    const submitButton = document.getElementById('submitPass');
+    const userInfoDiv = document.getElementById('userInfo');
+    const loggedInUsernameSpan = document.getElementById('loggedInUsername');
+    const logoutButton = document.getElementById('logoutButton');
+
+
+    // Check if the user has already signed in
+    const hasSignedIn = localStorage.getItem('hasSignedIn');
+    const savedUsername = localStorage.getItem('username');
+
+    if (hasSignedIn) {
+      // Display the saved username
+      loggedInUsernameSpan.textContent = savedUsername;
+      userInfoDiv.style.display = 'block';
+    } else {
+      modal.style.display = 'block';
+    }
+
+    //submitButton.addEventListener('click', async event => {
+    const loginForm = document.getElementById('login-form');
+    loginForm.addEventListener('submit', async function (event) {
+      event.preventDefault();
+
+      const formData = new FormData(form);
+      const username = formData.get('username');
+      const password = formData.get('password');
+      const loginData = { username, password };
+
+      const response = await fetch('/login', {
+        method: 'POST',
+        headers: new Headers({ 'content-type': 'application/json' }),
+        body: JSON.stringify(loginData)
+      });
+
+      const responseData = await response.json();
+
+      // Simulate authentication here (replace with actual logic)
+      //if (username === config.credentials.username && password === config.credentials.password) {
+      if (responseData.success) {
+        // Mark user as signed in and save username
+        localStorage.setItem('hasSignedIn', 'true');
+        localStorage.setItem('username', username);
+
+        // Display the saved username
+        loggedInUsernameSpan.textContent = username;
+        userInfoDiv.style.display = 'block';
+
+        // Hide the modal after successful authentication
+        modal.style.display = 'none';
+      } else {
+        console.error('Authentication failed');
       }
-
-      res.json(csvArray);
-    })
-    .catch(error => {
-      console.error('Error fetching CSV data:', error);
-      res.status(500).send('Error fetching CSV data.');
     });
-});
 
-app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`);
-});
+    // Logout button functionality
+    logoutButton.addEventListener('click', () => {
+      // Clear saved credentials from localStorage
+      localStorage.removeItem('hasSignedIn');
+      localStorage.removeItem('username');
+
+      // Hide the user info div
+      userInfoDiv.style.display = 'none';
+
+      // Show the modal again
+      modal.style.display = 'block';
+    });
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const csvURL = urlParams.get('url');
+
+
+    fetch('/get-csv')
+      .then(response => response.json())
+      .then(data => {
+        const columns = Object.keys(data[0]);
+        const groupBySelector = document.getElementById('group-by-selector');
+
+        // Populate the group-by selector with column names
+        columns.forEach(column => {
+          const option = document.createElement('option');
+          option.value = column;
+          option.textContent = column;
+          groupBySelector.appendChild(option);
+        });
+
+        // Initialize the Tabulator table
+        const table = new Tabulator('#table', {
+          layout: 'fitColumns',
+          groupBy: groupBySelector.value, // Initialize grouping based on selected column
+          columns: columns.map(column => ({
+            title: column,
+            field: column,
+            headerFilter: true,
+            editor: true
+          })),
+          data: data
+        });
+
+
+        table.on("cellEdited", function (cell) {
+          console.log('Cell Edited:', cell.getRow().getData());
+        });
+
+        // Update grouping when the selector value changes
+        groupBySelector.addEventListener('change', () => {
+          table.setGroupBy(groupBySelector.value);
+        });
+
+        // Add event listener for the Save button
+        const saveButton = document.getElementById('saveButton');
+        saveButton.addEventListener('click', () => {
+          // Send a POST request to save the CSV data
+          fetch('/save-csv', {
+            method: 'POST',
+            headers: {
+              'Authorization': `Basic ${btoa(`${username}:${password}`)}`,
+              'Content-Type': 'application/json',
+              'Content-Length': new TextEncoder().encode(data).length.toString(),
+            },
+            body: JSON.stringify(data), // Send the data to be saved            
+          })
+            .then(response => response.text())
+            .then(message => {
+              alert(message); // Display the server response
+            })
+            .catch(error => {
+              console.error('Error saving CSV data:', error);
+            });
+        });
+
+      })
+      .catch(error => {
+        console.error('Error fetching CSV data:', error);
+        alert('Error fetching CSV data.');
+      });
+
+    /*
+          document.addEventListener('DOMContentLoaded', function() {
+        const loginForm = document.getElementById('login-form');
+        const loginResultElement = document.getElementById('loginResult');
+    
+        loginForm.addEventListener('submit', async function(event) {
+          event.preventDefault();
+    
+          const formData = new FormData(loginForm);
+          const response = await fetch('/login', {
+            method: 'POST',
+            body: formData
+          });
+    
+          const responseData = await response.json();
+          if (responseData.success) {
+            loginResultElement.textContent = 'Login successful';
+            // Perform any other actions for successful login
+          } else {
+            loginResultElement.textContent = 'Login failed';
+            // Perform any other actions for failed login
+          }
+        });
+        
+      });*/
+
+  </script>
+
+
+</body>
+
+</html>

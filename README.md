@@ -1,3 +1,5 @@
+Need to populate config.js with user login information
+
 <p align="center">
   <img height="200" src="http://tabulator.info/images/logos/t_hollow.png">
 </p>
