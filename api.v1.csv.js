@@ -12,7 +12,7 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })) // for form data
 
-app.post('/login', (req, res) => {
+app.post('/api/v1/csv/login', (req, res) => {
   const submittedUsername = req.body.username;
   const submittedPassword = req.body.password;
 
@@ -26,17 +26,17 @@ app.post('/login', (req, res) => {
   }
 });
 
-app.get('/config.js', (req, res) => {
+app.get('/api/v1/csv/config.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'config.js'));
 });
 
-app.get('/', (req, res) => {
+app.get('/api/v1/csv/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
 });
 
 
 
-app.get('/get-csv', (req, res) => {
+app.get('/api/v1/csv/get-csv', (req, res) => {
   try {
     const csvFilePath = __dirname + '/data/cattle.csv';
     const csvArray = [];

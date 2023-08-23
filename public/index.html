@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/dist/css/tabulator.min.css">
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/csv-viewer/dist/css/tabulator.min.css">
+  <link rel="stylesheet" href="/csv-viewer/styles.css">
 
-  <script src="/dist/js/tabulator.min.js"></script>
+  <script src="/csv-viewer/dist/js/tabulator.min.js"></script>
   <title>CSV Viewer</title>
 </head>
 
@@ -72,7 +72,7 @@
       const password = formData.get('password');
       const loginData = { username, password };
 
-      const response = await fetch('/login', {
+      const response = await fetch('/api/v1/csv/login', {
         method: 'POST',
         headers: new Headers({ 'content-type': 'application/json' }),
         body: JSON.stringify(loginData)
@@ -115,7 +115,7 @@
     const csvURL = urlParams.get('url');
 
 
-    fetch('/get-csv')
+    fetch('/api/v1/csv/get-csv')
       .then(response => response.json())
       .then(data => {
         const columns = Object.keys(data[0]);
@@ -156,7 +156,7 @@
         const saveButton = document.getElementById('saveButton');
         saveButton.addEventListener('click', () => {
           // Send a POST request to save the CSV data
-          fetch('/save-csv', {
+          fetch('/api/v1/csv/save-csv', {
             method: 'POST',
             headers: {
               'Authorization': `Basic ${btoa(`${username}:${password}`)}`,
